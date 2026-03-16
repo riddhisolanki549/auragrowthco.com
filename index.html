@@ -191,24 +191,21 @@
 
     .hero-scroll {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 2rem;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--taupe);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       animation: fadeUp 1s 0.7s ease both;
+      pointer-events: none;
     }
 
     .scroll-line {
       width: 1px;
-      height: 40px;
-      background: var(--taupe);
+      height: 36px;
+      background: linear-gradient(to bottom, var(--taupe), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
@@ -711,7 +708,6 @@
       <a href="#services" class="btn-secondary">See Services</a>
     </div>
     <div class="hero-scroll">
-      <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -774,10 +770,6 @@
         <div class="stat">
           <div class="stat-num">1:1</div>
           <div class="stat-label">Dedicated account attention</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">Full</div>
-          <div class="stat-label">End-to-end service suite</div>
         </div>
       </div>
     </div>
