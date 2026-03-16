@@ -938,21 +938,21 @@
         <div class="form-row">
           <div>
             <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Jane Smith" />
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
           </div>
           <div>
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="jane@yourpractice.com" />
+            <input type="email" id="email" name="email" placeholder="jane@yourpractice.com" required />
           </div>
         </div>
         <div class="form-row">
           <div>
             <label for="business">Business Name</label>
-            <input type="text" id="business" placeholder="Your Practice Name" />
+            <input type="text" id="business" name="business" placeholder="Your Practice Name" />
           </div>
           <div>
             <label for="adspend">Monthly Ad Spend</label>
-            <select id="adspend">
+            <select id="adspend" name="monthly_ad_spend">
               <option value="">Select range</option>
               <option>Under $2,000</option>
               <option>$2,000 – $5,000</option>
@@ -964,7 +964,7 @@
         </div>
         <div>
           <label for="service">Service Interest</label>
-          <select id="service">
+          <select id="service" name="service_interest">
             <option value="">What are you looking for?</option>
             <option>Paid Advertising</option>
             <option>SEO</option>
@@ -978,7 +978,7 @@
         </div>
         <div>
           <label for="message">What are you struggling with?</label>
-          <textarea id="message" rows="4" placeholder="Tell us about your biggest marketing challenge..."></textarea>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your biggest marketing challenge..."></textarea>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Message →</button>
