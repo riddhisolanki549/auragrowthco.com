@@ -2,40 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aura Growth Co</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --cream: #f5f0e8;
-      --cream-dark: #ede7d9;
-      --warm-brown: #3a2e24;
-      --muted-brown: #7a6a58;
-      --light-muted: #a89880;
-      --accent: #c4a882;
-      --white: #fdfaf5;
+      --warm-white: #faf7f2;
+      --sand: #e8dfd0;
+      --taupe: #c8bca8;
+      --brown: #8b7355;
+      --dark: #1a1612;
+      --text: #2d2820;
+      --muted: #7a6e62;
+      --accent: #b8956a;
+      --accent-light: #d4b896;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--cream);
-      color: var(--warm-brown);
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* ── BOTANICAL SVG BACKGROUND ── */
-    .botanical-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.22;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     /* ── NAV ── */
@@ -46,62 +41,78 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 28px 60px;
-      background: transparent;
+      padding: 1.25rem 4rem;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 188, 168, 0.3);
     }
 
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--warm-brown);
+      letter-spacing: 0.08em;
+      color: var(--dark);
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 40px;
+      gap: 2.5rem;
       list-style: none;
     }
 
     .nav-links a {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted-brown);
+      color: var(--muted);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--warm-brown); }
+    .nav-links a:hover { color: var(--dark); }
 
     /* ── HERO ── */
     #hero {
-      position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 120px 40px 80px;
-      z-index: 1;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--warm-white);
     }
 
-    .hero-eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(184,149,106,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 30%, rgba(200,188,168,0.12) 0%, transparent 70%);
+    }
+
+    .hero-botanical {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--light-muted);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.3s;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s ease both;
     }
 
     .hero-title {
@@ -109,1028 +120,565 @@
       font-size: clamp(3.5rem, 8vw, 7rem);
       font-weight: 300;
       line-height: 1.05;
-      color: var(--warm-brown);
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.6s;
+      letter-spacing: -0.01em;
+      color: var(--dark);
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s 0.15s ease both;
     }
 
-    .hero-subtitle {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
       font-weight: 300;
-      line-height: 1.8;
-      color: var(--muted-brown);
+      color: var(--muted);
       max-width: 560px;
-      margin: 0 auto 48px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.9s;
+      margin: 2rem auto 0;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s 0.45s ease both;
     }
 
     .btn-primary {
       display: inline-block;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
+      padding: 0.85rem 2.2rem;
+      background: var(--dark);
+      color: var(--cream);
+      font-size: 0.78rem;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--warm-brown);
-      border: 1px solid var(--accent);
-      padding: 16px 40px;
       text-decoration: none;
-      transition: all 0.35s ease;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 1.2s;
-      background: transparent;
-      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
     }
 
     .btn-primary:hover {
-      background: var(--warm-brown);
-      color: var(--cream);
-      border-color: var(--warm-brown);
+      background: var(--accent);
+      transform: translateY(-1px);
     }
 
-    .scroll-hint {
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--taupe);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--dark);
+      color: var(--dark);
+    }
+
+    .hero-scroll {
       position: absolute;
-      bottom: 40px;
+      bottom: 2.5rem;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--light-muted);
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 1.8s;
+      color: var(--taupe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      animation: fadeUp 1s 0.7s ease both;
     }
 
-    .scroll-hint::after {
-      content: '';
-      display: block;
+    .scroll-line {
       width: 1px;
       height: 40px;
-      background: var(--accent);
-      margin: 10px auto 0;
-      animation: lineGrow 1.5s ease infinite;
+      background: var(--taupe);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      width: 60px;
-      height: 1px;
-      background: var(--accent);
-      margin: 0 auto 40px;
+    /* ── WHO WE SERVE ── */
+    #who-we-serve {
+      padding: 6rem 4rem;
+      background: var(--dark);
+      color: var(--cream);
     }
 
-    /* ── SECTIONS ── */
-    section {
-      position: relative;
-      z-index: 1;
-      padding: 100px 40px;
+    .serve-inner {
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    .section-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.28em;
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--light-muted);
-      margin-bottom: 20px;
-      text-align: center;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 300;
-      text-align: center;
-      margin-bottom: 24px;
       line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .section-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .serve-card {
+      border: 1px solid rgba(200, 188, 168, 0.15);
+      padding: 2rem 1.5rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .serve-card:hover {
+      border-color: rgba(184, 149, 106, 0.4);
+      background: rgba(184, 149, 106, 0.05);
+    }
+
+    .serve-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .serve-card p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(200, 188, 168, 0.7);
+      line-height: 1.6;
     }
 
     /* ── ABOUT ── */
     #about {
-      background: var(--white);
-      max-width: 100%;
-      padding: 100px 60px;
+      padding: 7rem 4rem;
+      background: var(--warm-white);
     }
 
-    #about .inner {
+    .about-inner {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 6rem;
       align-items: center;
     }
 
-    .about-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--light-muted);
-      margin-bottom: 20px;
+    .about-text .section-body {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
     }
 
-    .about-title {
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .stat {
+      border-top: 1px solid var(--sand);
+      padding-top: 1.2rem;
+    }
+
+    .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-size: 2.5rem;
       font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 28px;
-    }
-
-    .about-text {
-      font-size: 0.95rem;
-      line-height: 1.9;
-      color: var(--muted-brown);
-      margin-bottom: 20px;
-    }
-
-    .about-credentials {
-      display: flex;
-      gap: 40px;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid var(--cream-dark);
-    }
-
-    .credential {
-      text-align: center;
-    }
-
-    .credential-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--warm-brown);
-      display: block;
-    }
-
-    .credential-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-muted);
-      margin-top: 4px;
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .about-box {
-      background: var(--cream);
-      border: 1px solid var(--cream-dark);
-      padding: 48px 40px;
-      position: relative;
-    }
-
-    .about-box::before {
-      content: '"';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 6rem;
       color: var(--accent);
-      opacity: 0.4;
-      position: absolute;
-      top: 10px;
-      left: 24px;
       line-height: 1;
+      margin-bottom: 0.3rem;
     }
 
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.7;
-      color: var(--warm-brown);
-      padding-top: 20px;
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--muted);
     }
 
     /* ── SERVICES ── */
     #services {
-      padding: 100px 40px;
+      padding: 7rem 4rem;
+      background: var(--cream);
+    }
+
+    .services-inner {
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    .services-grid {
+    .services-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-top: 60px;
-      border: 1px solid var(--cream-dark);
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--sand);
     }
 
     .service-card {
-      padding: 56px 48px;
-      background: var(--white);
-      transition: background 0.3s ease;
+      background: var(--cream);
+      padding: 2.5rem 2rem;
       position: relative;
       overflow: hidden;
+      transition: background 0.3s;
     }
 
-    .service-card:first-child {
-      border-right: 1px solid var(--cream-dark);
-    }
-
-    .service-card::after {
+    .service-card::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 2px;
+      top: 0; left: 0; right: 0;
+      height: 2px;
       background: var(--accent);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.4s ease;
     }
 
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-card:hover { background: var(--cream); }
-
-    .service-tag {
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
+    .service-card:hover {
+      background: var(--warm-white);
     }
 
-    .service-name {
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
+      font-size: 0.85rem;
       font-weight: 400;
-      margin-bottom: 8px;
+      color: var(--taupe);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.8rem;
       line-height: 1.2;
     }
 
-    .service-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--muted-brown);
-      margin-bottom: 28px;
+    .service-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
     }
 
-    .service-desc {
-      font-size: 0.88rem;
-      line-height: 1.9;
-      color: var(--muted-brown);
-      margin-bottom: 32px;
-    }
-
-    .service-includes {
-      list-style: none;
-      border-top: 1px solid var(--cream-dark);
-      padding-top: 28px;
-    }
-
-    .service-includes li {
-      font-size: 0.82rem;
-      color: var(--muted-brown);
-      padding: 8px 0;
+    .service-tags {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.5;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
-    .service-includes li::before {
-      content: '—';
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 1px;
+      border: 1px solid var(--accent-light);
+      padding: 0.2rem 0.6rem;
     }
 
     /* ── PROCESS ── */
     #process {
-      background: var(--warm-brown);
-      max-width: 100%;
-      padding: 100px 60px;
+      padding: 7rem 4rem;
+      background: var(--warm-white);
     }
 
-    #process .inner {
+    .process-inner {
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    #process .section-eyebrow { color: var(--accent); }
-    #process .section-title { color: var(--cream); }
+    .process-header {
+      max-width: 520px;
+      margin-bottom: 4rem;
+    }
 
     .process-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 60px;
-    }
-
-    .process-step {
-      padding: 48px 40px;
-      border: 1px solid rgba(196, 168, 130, 0.2);
+      gap: 0;
       position: relative;
     }
 
-    .step-number {
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: calc(100% / 6);
+      right: calc(100% / 6);
+      height: 1px;
+      background: var(--sand);
+    }
+
+    .step {
+      padding: 0 2rem 0 0;
+    }
+
+    .step-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
+      font-size: 2.5rem;
       font-weight: 300;
-      color: rgba(196, 168, 130, 0.25);
+      color: var(--accent);
       line-height: 1;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      background: var(--warm-white);
+      padding-right: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .step-title {
+    .step h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 16px;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
     }
 
-    .step-desc {
+    .step p {
       font-size: 0.85rem;
-      line-height: 1.8;
-      color: rgba(245, 240, 232, 0.6);
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
-    /* ── FOUNDING ── */
-    #founding {
-      padding: 100px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
+    /* ── CTA BAND ── */
+    #cta-band {
+      padding: 5rem 4rem;
+      background: var(--dark);
+      color: var(--cream);
       text-align: center;
     }
 
-    .founding-box {
-      border: 1px solid var(--cream-dark);
-      padding: 72px 80px;
-      background: var(--white);
-      position: relative;
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .founding-badge {
-      display: inline-block;
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--accent);
-      padding: 8px 20px;
-      margin-bottom: 36px;
+    .cta-inner .section-label { color: var(--accent-light); }
+
+    .cta-inner .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--cream);
+      margin-bottom: 1.2rem;
     }
 
-    .founding-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 300;
-      margin-bottom: 20px;
-      line-height: 1.3;
-    }
-
-    .founding-text {
-      font-size: 0.92rem;
-      line-height: 1.9;
-      color: var(--muted-brown);
-      max-width: 560px;
-      margin: 0 auto 40px;
+    .cta-inner .section-body {
+      color: rgba(200, 188, 168, 0.7);
+      margin: 0 auto 2.5rem;
     }
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--cream-dark);
-      max-width: 100%;
-      padding: 100px 60px;
+      padding: 7rem 4rem;
+      background: var(--warm-white);
     }
 
-    #contact .inner {
-      max-width: 700px;
+    .contact-inner {
+      max-width: 1100px;
       margin: 0 auto;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
     }
 
-    #contact .section-title { margin-bottom: 16px; }
-
-    .contact-sub {
-      font-size: 0.9rem;
-      color: var(--muted-brown);
-      line-height: 1.8;
-      margin-bottom: 56px;
+    .contact-left .section-body {
+      margin-bottom: 2.5rem;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
+    .contact-detail {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
-    .form-group label {
+    .contact-detail strong {
       display: block;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--light-muted);
-      margin-bottom: 8px;
+      color: var(--taupe);
+      margin-bottom: 0.25rem;
     }
 
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      background: var(--white);
-      border: 1px solid var(--cream-dark);
-      padding: 16px 20px;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--warm-brown);
-      outline: none;
-      transition: border-color 0.3s;
-      -webkit-appearance: none;
-      border-radius: 0;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
     }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .form-group textarea { height: 140px; resize: none; }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 1rem;
     }
 
-    .btn-submit {
-      width: 100%;
-      background: var(--warm-brown);
-      color: var(--cream);
-      border: none;
-      padding: 18px;
-      font-family: 'Jost', sans-serif;
+    label {
       font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s;
-      margin-top: 8px;
+      color: var(--taupe);
+      display: block;
+      margin-bottom: 0.4rem;
     }
 
-    .btn-submit:hover { background: var(--accent); }
+    input, select, textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--sand);
+      padding: 0.75rem 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8bca8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      padding-right: 2rem;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
 
     /* ── FOOTER ── */
     footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px;
-      background: var(--warm-brown);
-      color: rgba(245, 240, 232, 0.4);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--sand);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--warm-white);
     }
 
-    footer span { color: var(--accent); }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--dark);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--taupe);
+    }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes lineGrow {
-      0%, 100% { transform: scaleY(1); opacity: 1; }
-      50% { transform: scaleY(0.4); opacity: 0.4; }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 1.5rem 0;
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 24px 28px; }
-      .nav-links { display: none; }
-      #about .inner { grid-template-columns: 1fr; gap: 40px; }
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 2rem; }
+      #hero, #about, #services, #process, #contact, #who-we-serve, #cta-band { padding-left: 2rem; padding-right: 2rem; }
+      .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .services-grid { grid-template-columns: 1fr; }
-      .service-card:first-child { border-right: none; border-bottom: 1px solid var(--cream-dark); }
-      .process-steps { grid-template-columns: 1fr; }
-      .founding-box { padding: 48px 28px; }
+      .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+      .process-steps::before { display: none; }
       .form-row { grid-template-columns: 1fr; }
-      #contact { padding: 80px 28px; }
-      #about { padding: 80px 28px; }
-      #process { padding: 80px 28px; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Botanical SVG Background -->
-  <svg class="botanical-bg" viewBox="0 0 1440 4000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice">
-    <defs>
-      <style>
-        .leaf { fill: #c8bca8; opacity: 0.45; }
-        .stem { stroke: #b0a090; stroke-width: 1.5; fill: none; }
-      </style>
-    </defs>
-
-    <!-- LEFT SIDE - continuous stem down the page -->
-    <path class="stem" d="M-10,0 Q60,200 30,400 Q0,600 50,800 Q90,1000 40,1200 Q0,1400 50,1600 Q90,1800 40,2000 Q0,2200 50,2400 Q90,2600 40,2800 Q0,3000 50,3200 Q90,3400 40,3600 Q10,3800 30,4000"/>
-
-    <!-- LEFT clusters at intervals -->
-    <!-- 0-300 -->
-    <circle class="leaf" cx="10" cy="30" r="38"/>
-    <circle class="leaf" cx="55" cy="10" r="32"/>
-    <circle class="leaf" cx="95" cy="40" r="44"/>
-    <circle class="leaf" cx="140" cy="18" r="28"/>
-    <circle class="leaf" cx="175" cy="52" r="36"/>
-    <circle class="leaf" cx="-20" cy="110" r="40"/>
-    <circle class="leaf" cx="28" cy="95" r="34"/>
-    <circle class="leaf" cx="72" cy="108" r="42"/>
-    <circle class="leaf" cx="118" cy="88" r="30"/>
-    <circle class="leaf" cx="155" cy="115" r="38"/>
-    <circle class="leaf" cx="-10" cy="195" r="36"/>
-    <circle class="leaf" cx="38" cy="180" r="44"/>
-    <circle class="leaf" cx="88" cy="192" r="32"/>
-    <circle class="leaf" cx="130" cy="208" r="40"/>
-    <circle class="leaf" cx="170" cy="190" r="26"/>
-
-    <!-- 300-600 -->
-    <circle class="leaf" cx="20" cy="320" r="34"/>
-    <circle class="leaf" cx="68" cy="305" r="40"/>
-    <circle class="leaf" cx="112" cy="318" r="28"/>
-    <circle class="leaf" cx="150" cy="340" r="36"/>
-    <circle class="leaf" cx="-15" cy="400" r="38"/>
-    <circle class="leaf" cx="35" cy="388" r="44"/>
-    <circle class="leaf" cx="82" cy="402" r="32"/>
-    <circle class="leaf" cx="128" cy="415" r="30"/>
-    <circle class="leaf" cx="10" cy="490" r="36"/>
-    <circle class="leaf" cx="55" cy="475" r="42"/>
-    <circle class="leaf" cx="100" cy="488" r="34"/>
-    <circle class="leaf" cx="145" cy="500" r="28"/>
-    <circle class="leaf" cx="180" cy="478" r="38"/>
-    <circle class="leaf" cx="-20" cy="565" r="32"/>
-    <circle class="leaf" cx="30" cy="550" r="40"/>
-    <circle class="leaf" cx="78" cy="568" r="36"/>
-    <circle class="leaf" cx="122" cy="555" r="44"/>
-
-    <!-- 600-900 -->
-    <circle class="leaf" cx="15" cy="625" r="38"/>
-    <circle class="leaf" cx="60" cy="610" r="32"/>
-    <circle class="leaf" cx="105" cy="628" r="40"/>
-    <circle class="leaf" cx="148" cy="615" r="28"/>
-    <circle class="leaf" cx="-10" cy="705" r="36"/>
-    <circle class="leaf" cx="38" cy="690" r="44"/>
-    <circle class="leaf" cx="85" cy="708" r="30"/>
-    <circle class="leaf" cx="130" cy="695" r="38"/>
-    <circle class="leaf" cx="5" cy="785" r="42"/>
-    <circle class="leaf" cx="52" cy="770" r="34"/>
-    <circle class="leaf" cx="98" cy="788" r="40"/>
-    <circle class="leaf" cx="142" cy="775" r="28"/>
-    <circle class="leaf" cx="178" cy="795" r="36"/>
-    <circle class="leaf" cx="-18" cy="862" r="38"/>
-    <circle class="leaf" cx="28" cy="848" r="44"/>
-    <circle class="leaf" cx="75" cy="865" r="32"/>
-
-    <!-- 900-1200 -->
-    <circle class="leaf" cx="12" cy="928" r="36"/>
-    <circle class="leaf" cx="58" cy="912" r="40"/>
-    <circle class="leaf" cx="102" cy="930" r="28"/>
-    <circle class="leaf" cx="148" cy="918" r="44"/>
-    <circle class="leaf" cx="-12" cy="1005" r="34"/>
-    <circle class="leaf" cx="35" cy="990" r="38"/>
-    <circle class="leaf" cx="80" cy="1008" r="42"/>
-    <circle class="leaf" cx="125" cy="995" r="30"/>
-    <circle class="leaf" cx="8" cy="1082" r="36"/>
-    <circle class="leaf" cx="55" cy="1068" r="44"/>
-    <circle class="leaf" cx="100" cy="1085" r="28"/>
-    <circle class="leaf" cx="145" cy="1072" r="40"/>
-    <circle class="leaf" cx="180" cy="1090" r="32"/>
-    <circle class="leaf" cx="-15" cy="1158" r="38"/>
-    <circle class="leaf" cx="32" cy="1145" r="34"/>
-    <circle class="leaf" cx="78" cy="1162" r="42"/>
-
-    <!-- 1200-1600 -->
-    <circle class="leaf" cx="18" cy="1228" r="30"/>
-    <circle class="leaf" cx="62" cy="1215" r="38"/>
-    <circle class="leaf" cx="108" cy="1232" r="44"/>
-    <circle class="leaf" cx="152" cy="1220" r="28"/>
-    <circle class="leaf" cx="-8" cy="1305" r="36"/>
-    <circle class="leaf" cx="40" cy="1290" r="40"/>
-    <circle class="leaf" cx="85" cy="1308" r="32"/>
-    <circle class="leaf" cx="130" cy="1295" r="38"/>
-    <circle class="leaf" cx="5" cy="1382" r="44"/>
-    <circle class="leaf" cx="50" cy="1368" r="34"/>
-    <circle class="leaf" cx="96" cy="1385" r="28"/>
-    <circle class="leaf" cx="142" cy="1372" r="40"/>
-    <circle class="leaf" cx="175" cy="1390" r="36"/>
-    <circle class="leaf" cx="-20" cy="1455" r="38"/>
-    <circle class="leaf" cx="28" cy="1442" r="42"/>
-    <circle class="leaf" cx="75" cy="1458" r="30"/>
-    <circle class="leaf" cx="120" cy="1445" r="36"/>
-
-    <!-- 1600-2000 -->
-    <circle class="leaf" cx="15" cy="1525" r="40"/>
-    <circle class="leaf" cx="60" cy="1510" r="28"/>
-    <circle class="leaf" cx="105" cy="1528" r="44"/>
-    <circle class="leaf" cx="148" cy="1515" r="34"/>
-    <circle class="leaf" cx="-12" cy="1602" r="36"/>
-    <circle class="leaf" cx="35" cy="1588" r="38"/>
-    <circle class="leaf" cx="82" cy="1605" r="32"/>
-    <circle class="leaf" cx="128" cy="1592" r="40"/>
-    <circle class="leaf" cx="8" cy="1678" r="44"/>
-    <circle class="leaf" cx="55" cy="1665" r="30"/>
-    <circle class="leaf" cx="100" cy="1682" r="38"/>
-    <circle class="leaf" cx="145" cy="1668" r="28"/>
-    <circle class="leaf" cx="178" cy="1685" r="42"/>
-    <circle class="leaf" cx="-18" cy="1752" r="36"/>
-    <circle class="leaf" cx="30" cy="1738" r="44"/>
-    <circle class="leaf" cx="78" cy="1755" r="32"/>
-    <circle class="leaf" cx="122" cy="1742" r="38"/>
-
-    <!-- 2000-2400 -->
-    <circle class="leaf" cx="12" cy="1822" r="40"/>
-    <circle class="leaf" cx="58" cy="1808" r="28"/>
-    <circle class="leaf" cx="102" cy="1825" r="36"/>
-    <circle class="leaf" cx="148" cy="1812" r="44"/>
-    <circle class="leaf" cx="-10" cy="1898" r="34"/>
-    <circle class="leaf" cx="38" cy="1885" r="38"/>
-    <circle class="leaf" cx="85" cy="1902" r="30"/>
-    <circle class="leaf" cx="130" cy="1888" r="42"/>
-    <circle class="leaf" cx="5" cy="1975" r="36"/>
-    <circle class="leaf" cx="52" cy="1960" r="44"/>
-    <circle class="leaf" cx="98" cy="1978" r="28"/>
-    <circle class="leaf" cx="142" cy="1965" r="40"/>
-    <circle class="leaf" cx="175" cy="1982" r="32"/>
-    <circle class="leaf" cx="-15" cy="2048" r="38"/>
-    <circle class="leaf" cx="32" cy="2035" r="34"/>
-    <circle class="leaf" cx="78" cy="2052" r="42"/>
-    <circle class="leaf" cx="122" cy="2038" r="28"/>
-
-    <!-- 2400-2800 -->
-    <circle class="leaf" cx="18" cy="2118" r="36"/>
-    <circle class="leaf" cx="62" cy="2105" r="40"/>
-    <circle class="leaf" cx="108" cy="2122" r="44"/>
-    <circle class="leaf" cx="152" cy="2108" r="30"/>
-    <circle class="leaf" cx="-8" cy="2195" r="38"/>
-    <circle class="leaf" cx="40" cy="2180" r="28"/>
-    <circle class="leaf" cx="85" cy="2198" r="42"/>
-    <circle class="leaf" cx="130" cy="2185" r="36"/>
-    <circle class="leaf" cx="5" cy="2272" r="34"/>
-    <circle class="leaf" cx="50" cy="2258" r="40"/>
-    <circle class="leaf" cx="96" cy="2275" r="28"/>
-    <circle class="leaf" cx="142" cy="2262" r="44"/>
-    <circle class="leaf" cx="178" cy="2278" r="32"/>
-    <circle class="leaf" cx="-20" cy="2348" r="38"/>
-    <circle class="leaf" cx="28" cy="2335" r="36"/>
-    <circle class="leaf" cx="75" cy="2352" r="42"/>
-    <circle class="leaf" cx="120" cy="2338" r="30"/>
-
-    <!-- 2800-3200 -->
-    <circle class="leaf" cx="15" cy="2418" r="40"/>
-    <circle class="leaf" cx="60" cy="2405" r="28"/>
-    <circle class="leaf" cx="105" cy="2422" r="36"/>
-    <circle class="leaf" cx="148" cy="2408" r="44"/>
-    <circle class="leaf" cx="-12" cy="2495" r="34"/>
-    <circle class="leaf" cx="35" cy="2482" r="38"/>
-    <circle class="leaf" cx="82" cy="2498" r="30"/>
-    <circle class="leaf" cx="128" cy="2485" r="42"/>
-    <circle class="leaf" cx="8" cy="2572" r="36"/>
-    <circle class="leaf" cx="55" cy="2558" r="44"/>
-    <circle class="leaf" cx="100" cy="2575" r="28"/>
-    <circle class="leaf" cx="145" cy="2562" r="40"/>
-    <circle class="leaf" cx="180" cy="2578" r="32"/>
-    <circle class="leaf" cx="-18" cy="2648" r="38"/>
-    <circle class="leaf" cx="30" cy="2635" r="34"/>
-    <circle class="leaf" cx="78" cy="2652" r="42"/>
-
-    <!-- 3200-4000 -->
-    <circle class="leaf" cx="12" cy="2722" r="30"/>
-    <circle class="leaf" cx="58" cy="2708" r="38"/>
-    <circle class="leaf" cx="102" cy="2725" r="44"/>
-    <circle class="leaf" cx="148" cy="2712" r="28"/>
-    <circle class="leaf" cx="-8" cy="2798" r="36"/>
-    <circle class="leaf" cx="40" cy="2785" r="40"/>
-    <circle class="leaf" cx="85" cy="2802" r="32"/>
-    <circle class="leaf" cx="130" cy="2788" r="38"/>
-    <circle class="leaf" cx="5" cy="2875" r="44"/>
-    <circle class="leaf" cx="52" cy="2862" r="30"/>
-    <circle class="leaf" cx="98" cy="2878" r="36"/>
-    <circle class="leaf" cx="142" cy="2865" r="42"/>
-    <circle class="leaf" cx="175" cy="2882" r="28"/>
-    <circle class="leaf" cx="-15" cy="2952" r="38"/>
-    <circle class="leaf" cx="32" cy="2938" r="34"/>
-    <circle class="leaf" cx="78" cy="2955" r="40"/>
-    <circle class="leaf" cx="122" cy="2942" r="44"/>
-    <circle class="leaf" cx="18" cy="3025" r="32"/>
-    <circle class="leaf" cx="62" cy="3012" r="38"/>
-    <circle class="leaf" cx="108" cy="3028" r="28"/>
-    <circle class="leaf" cx="152" cy="3015" r="42"/>
-    <circle class="leaf" cx="-10" cy="3098" r="36"/>
-    <circle class="leaf" cx="38" cy="3085" r="44"/>
-    <circle class="leaf" cx="85" cy="3102" r="30"/>
-    <circle class="leaf" cx="130" cy="3088" r="38"/>
-    <circle class="leaf" cx="5" cy="3172" r="40"/>
-    <circle class="leaf" cx="50" cy="3158" r="28"/>
-    <circle class="leaf" cx="96" cy="3175" r="36"/>
-    <circle class="leaf" cx="142" cy="3162" r="44"/>
-    <circle class="leaf" cx="178" cy="3178" r="32"/>
-    <circle class="leaf" cx="-20" cy="3248" r="38"/>
-    <circle class="leaf" cx="28" cy="3235" r="34"/>
-    <circle class="leaf" cx="75" cy="3252" r="42"/>
-    <circle class="leaf" cx="120" cy="3238" r="30"/>
-    <circle class="leaf" cx="15" cy="3322" r="36"/>
-    <circle class="leaf" cx="60" cy="3308" r="44"/>
-    <circle class="leaf" cx="105" cy="3325" r="28"/>
-    <circle class="leaf" cx="148" cy="3312" r="40"/>
-    <circle class="leaf" cx="-12" cy="3395" r="38"/>
-    <circle class="leaf" cx="35" cy="3382" r="32"/>
-    <circle class="leaf" cx="82" cy="3398" r="44"/>
-    <circle class="leaf" cx="128" cy="3385" r="36"/>
-    <circle class="leaf" cx="8" cy="3468" r="30"/>
-    <circle class="leaf" cx="55" cy="3455" r="38"/>
-    <circle class="leaf" cx="100" cy="3472" r="42"/>
-    <circle class="leaf" cx="145" cy="3458" r="28"/>
-    <circle class="leaf" cx="180" cy="3475" r="36"/>
-    <circle class="leaf" cx="-18" cy="3545" r="44"/>
-    <circle class="leaf" cx="30" cy="3532" r="34"/>
-    <circle class="leaf" cx="78" cy="3548" r="38"/>
-    <circle class="leaf" cx="122" cy="3535" r="30"/>
-    <circle class="leaf" cx="12" cy="3618" r="40"/>
-    <circle class="leaf" cx="58" cy="3605" r="28"/>
-    <circle class="leaf" cx="102" cy="3622" r="36"/>
-    <circle class="leaf" cx="148" cy="3608" r="44"/>
-    <circle class="leaf" cx="-8" cy="3692" r="32"/>
-    <circle class="leaf" cx="40" cy="3678" r="38"/>
-    <circle class="leaf" cx="85" cy="3695" r="42"/>
-    <circle class="leaf" cx="130" cy="3682" r="28"/>
-    <circle class="leaf" cx="5" cy="3765" r="36"/>
-    <circle class="leaf" cx="52" cy="3752" r="44"/>
-    <circle class="leaf" cx="98" cy="3768" r="30"/>
-    <circle class="leaf" cx="142" cy="3755" r="38"/>
-    <circle class="leaf" cx="175" cy="3772" r="40"/>
-    <circle class="leaf" cx="-15" cy="3845" r="34"/>
-    <circle class="leaf" cx="32" cy="3832" r="42"/>
-    <circle class="leaf" cx="78" cy="3848" r="28"/>
-    <circle class="leaf" cx="122" cy="3835" r="36"/>
-    <circle class="leaf" cx="18" cy="3918" r="44"/>
-    <circle class="leaf" cx="62" cy="3905" r="32"/>
-    <circle class="leaf" cx="108" cy="3922" r="38"/>
-    <circle class="leaf" cx="152" cy="3908" r="30"/>
-    <circle class="leaf" cx="-10" cy="3985" r="40"/>
-    <circle class="leaf" cx="38" cy="3972" r="36"/>
-    <circle class="leaf" cx="85" cy="3988" r="44"/>
-
-    <!-- RIGHT SIDE - continuous stem down the page -->
-    <path class="stem" d="M1450,0 Q1380,200 1410,400 Q1440,600 1390,800 Q1350,1000 1400,1200 Q1440,1400 1390,1600 Q1350,1800 1400,2000 Q1440,2200 1390,2400 Q1350,2600 1400,2800 Q1440,3000 1390,3200 Q1350,3400 1400,3600 Q1430,3800 1410,4000"/>
-
-    <!-- RIGHT clusters mirrored -->
-    <!-- 0-300 -->
-    <circle class="leaf" cx="1430" cy="30" r="38"/>
-    <circle class="leaf" cx="1385" cy="10" r="32"/>
-    <circle class="leaf" cx="1345" cy="40" r="44"/>
-    <circle class="leaf" cx="1300" cy="18" r="28"/>
-    <circle class="leaf" cx="1265" cy="52" r="36"/>
-    <circle class="leaf" cx="1460" cy="110" r="40"/>
-    <circle class="leaf" cx="1412" cy="95" r="34"/>
-    <circle class="leaf" cx="1368" cy="108" r="42"/>
-    <circle class="leaf" cx="1322" cy="88" r="30"/>
-    <circle class="leaf" cx="1285" cy="115" r="38"/>
-    <circle class="leaf" cx="1450" cy="195" r="36"/>
-    <circle class="leaf" cx="1402" cy="180" r="44"/>
-    <circle class="leaf" cx="1352" cy="192" r="32"/>
-    <circle class="leaf" cx="1310" cy="208" r="40"/>
-    <circle class="leaf" cx="1270" cy="190" r="26"/>
-
-    <!-- 300-600 -->
-    <circle class="leaf" cx="1420" cy="320" r="34"/>
-    <circle class="leaf" cx="1372" cy="305" r="40"/>
-    <circle class="leaf" cx="1328" cy="318" r="28"/>
-    <circle class="leaf" cx="1290" cy="340" r="36"/>
-    <circle class="leaf" cx="1455" cy="400" r="38"/>
-    <circle class="leaf" cx="1405" cy="388" r="44"/>
-    <circle class="leaf" cx="1358" cy="402" r="32"/>
-    <circle class="leaf" cx="1312" cy="415" r="30"/>
-    <circle class="leaf" cx="1430" cy="490" r="36"/>
-    <circle class="leaf" cx="1385" cy="475" r="42"/>
-    <circle class="leaf" cx="1340" cy="488" r="34"/>
-    <circle class="leaf" cx="1295" cy="500" r="28"/>
-    <circle class="leaf" cx="1260" cy="478" r="38"/>
-    <circle class="leaf" cx="1460" cy="565" r="32"/>
-    <circle class="leaf" cx="1410" cy="550" r="40"/>
-    <circle class="leaf" cx="1362" cy="568" r="36"/>
-    <circle class="leaf" cx="1318" cy="555" r="44"/>
-
-    <!-- 600-900 -->
-    <circle class="leaf" cx="1425" cy="625" r="38"/>
-    <circle class="leaf" cx="1380" cy="610" r="32"/>
-    <circle class="leaf" cx="1335" cy="628" r="40"/>
-    <circle class="leaf" cx="1292" cy="615" r="28"/>
-    <circle class="leaf" cx="1450" cy="705" r="36"/>
-    <circle class="leaf" cx="1402" cy="690" r="44"/>
-    <circle class="leaf" cx="1355" cy="708" r="30"/>
-    <circle class="leaf" cx="1310" cy="695" r="38"/>
-    <circle class="leaf" cx="1435" cy="785" r="42"/>
-    <circle class="leaf" cx="1388" cy="770" r="34"/>
-    <circle class="leaf" cx="1342" cy="788" r="40"/>
-    <circle class="leaf" cx="1298" cy="775" r="28"/>
-    <circle class="leaf" cx="1262" cy="795" r="36"/>
-    <circle class="leaf" cx="1458" cy="862" r="38"/>
-    <circle class="leaf" cx="1412" cy="848" r="44"/>
-    <circle class="leaf" cx="1365" cy="865" r="32"/>
-
-    <!-- 900-1200 -->
-    <circle class="leaf" cx="1428" cy="928" r="36"/>
-    <circle class="leaf" cx="1382" cy="912" r="40"/>
-    <circle class="leaf" cx="1338" cy="930" r="28"/>
-    <circle class="leaf" cx="1292" cy="918" r="44"/>
-    <circle class="leaf" cx="1452" cy="1005" r="34"/>
-    <circle class="leaf" cx="1405" cy="990" r="38"/>
-    <circle class="leaf" cx="1360" cy="1008" r="42"/>
-    <circle class="leaf" cx="1315" cy="995" r="30"/>
-    <circle class="leaf" cx="1432" cy="1082" r="36"/>
-    <circle class="leaf" cx="1385" cy="1068" r="44"/>
-    <circle class="leaf" cx="1340" cy="1085" r="28"/>
-    <circle class="leaf" cx="1295" cy="1072" r="40"/>
-    <circle class="leaf" cx="1262" cy="1090" r="32"/>
-    <circle class="leaf" cx="1455" cy="1158" r="38"/>
-    <circle class="leaf" cx="1408" cy="1145" r="34"/>
-    <circle class="leaf" cx="1362" cy="1162" r="42"/>
-
-    <!-- 1200-1600 -->
-    <circle class="leaf" cx="1422" cy="1228" r="30"/>
-    <circle class="leaf" cx="1378" cy="1215" r="38"/>
-    <circle class="leaf" cx="1332" cy="1232" r="44"/>
-    <circle class="leaf" cx="1288" cy="1220" r="28"/>
-    <circle class="leaf" cx="1448" cy="1305" r="36"/>
-    <circle class="leaf" cx="1400" cy="1290" r="40"/>
-    <circle class="leaf" cx="1355" cy="1308" r="32"/>
-    <circle class="leaf" cx="1310" cy="1295" r="38"/>
-    <circle class="leaf" cx="1435" cy="1382" r="44"/>
-    <circle class="leaf" cx="1390" cy="1368" r="34"/>
-    <circle class="leaf" cx="1344" cy="1385" r="28"/>
-    <circle class="leaf" cx="1298" cy="1372" r="40"/>
-    <circle class="leaf" cx="1265" cy="1390" r="36"/>
-    <circle class="leaf" cx="1460" cy="1455" r="38"/>
-    <circle class="leaf" cx="1412" cy="1442" r="42"/>
-    <circle class="leaf" cx="1365" cy="1458" r="30"/>
-    <circle class="leaf" cx="1320" cy="1445" r="36"/>
-
-    <!-- 1600-2000 -->
-    <circle class="leaf" cx="1425" cy="1525" r="40"/>
-    <circle class="leaf" cx="1380" cy="1510" r="28"/>
-    <circle class="leaf" cx="1335" cy="1528" r="44"/>
-    <circle class="leaf" cx="1292" cy="1515" r="34"/>
-    <circle class="leaf" cx="1452" cy="1602" r="36"/>
-    <circle class="leaf" cx="1405" cy="1588" r="38"/>
-    <circle class="leaf" cx="1358" cy="1605" r="32"/>
-    <circle class="leaf" cx="1312" cy="1592" r="40"/>
-    <circle class="leaf" cx="1432" cy="1678" r="44"/>
-    <circle class="leaf" cx="1385" cy="1665" r="30"/>
-    <circle class="leaf" cx="1340" cy="1682" r="38"/>
-    <circle class="leaf" cx="1295" cy="1668" r="28"/>
-    <circle class="leaf" cx="1262" cy="1685" r="42"/>
-    <circle class="leaf" cx="1458" cy="1752" r="36"/>
-    <circle class="leaf" cx="1410" cy="1738" r="44"/>
-    <circle class="leaf" cx="1362" cy="1755" r="32"/>
-    <circle class="leaf" cx="1318" cy="1742" r="38"/>
-
-    <!-- 2000-2400 -->
-    <circle class="leaf" cx="1428" cy="1822" r="40"/>
-    <circle class="leaf" cx="1382" cy="1808" r="28"/>
-    <circle class="leaf" cx="1338" cy="1825" r="36"/>
-    <circle class="leaf" cx="1292" cy="1812" r="44"/>
-    <circle class="leaf" cx="1450" cy="1898" r="34"/>
-    <circle class="leaf" cx="1402" cy="1885" r="38"/>
-    <circle class="leaf" cx="1355" cy="1902" r="30"/>
-    <circle class="leaf" cx="1310" cy="1888" r="42"/>
-    <circle class="leaf" cx="1435" cy="1975" r="36"/>
-    <circle class="leaf" cx="1388" cy="1960" r="44"/>
-    <circle class="leaf" cx="1342" cy="1978" r="28"/>
-    <circle class="leaf" cx="1298" cy="1965" r="40"/>
-    <circle class="leaf" cx="1265" cy="1982" r="32"/>
-    <circle class="leaf" cx="1455" cy="2048" r="38"/>
-    <circle class="leaf" cx="1408" cy="2035" r="34"/>
-    <circle class="leaf" cx="1362" cy="2052" r="42"/>
-    <circle class="leaf" cx="1318" cy="2038" r="28"/>
-
-    <!-- 2400-2800 -->
-    <circle class="leaf" cx="1422" cy="2118" r="36"/>
-    <circle class="leaf" cx="1378" cy="2105" r="40"/>
-    <circle class="leaf" cx="1332" cy="2122" r="44"/>
-    <circle class="leaf" cx="1288" cy="2108" r="30"/>
-    <circle class="leaf" cx="1452" cy="2195" r="38"/>
-    <circle class="leaf" cx="1400" cy="2180" r="28"/>
-    <circle class="leaf" cx="1355" cy="2198" r="42"/>
-    <circle class="leaf" cx="1310" cy="2185" r="36"/>
-    <circle class="leaf" cx="1435" cy="2272" r="34"/>
-    <circle class="leaf" cx="1390" cy="2258" r="40"/>
-    <circle class="leaf" cx="1344" cy="2275" r="28"/>
-    <circle class="leaf" cx="1298" cy="2262" r="44"/>
-    <circle class="leaf" cx="1262" cy="2278" r="32"/>
-    <circle class="leaf" cx="1460" cy="2348" r="38"/>
-    <circle class="leaf" cx="1412" cy="2335" r="36"/>
-    <circle class="leaf" cx="1365" cy="2352" r="42"/>
-    <circle class="leaf" cx="1320" cy="2338" r="30"/>
-
-    <!-- 2800-3200 -->
-    <circle class="leaf" cx="1425" cy="2418" r="40"/>
-    <circle class="leaf" cx="1380" cy="2405" r="28"/>
-    <circle class="leaf" cx="1335" cy="2422" r="36"/>
-    <circle class="leaf" cx="1292" cy="2408" r="44"/>
-    <circle class="leaf" cx="1452" cy="2495" r="34"/>
-    <circle class="leaf" cx="1405" cy="2482" r="38"/>
-    <circle class="leaf" cx="1358" cy="2498" r="30"/>
-    <circle class="leaf" cx="1312" cy="2485" r="42"/>
-    <circle class="leaf" cx="1432" cy="2572" r="36"/>
-    <circle class="leaf" cx="1385" cy="2558" r="44"/>
-    <circle class="leaf" cx="1340" cy="2575" r="28"/>
-    <circle class="leaf" cx="1295" cy="2562" r="40"/>
-    <circle class="leaf" cx="1262" cy="2578" r="32"/>
-    <circle class="leaf" cx="1458" cy="2648" r="38"/>
-    <circle class="leaf" cx="1410" cy="2635" r="34"/>
-    <circle class="leaf" cx="1362" cy="2652" r="42"/>
-
-    <!-- 3200-4000 -->
-    <circle class="leaf" cx="1428" cy="2722" r="30"/>
-    <circle class="leaf" cx="1382" cy="2708" r="38"/>
-    <circle class="leaf" cx="1338" cy="2725" r="44"/>
-    <circle class="leaf" cx="1292" cy="2712" r="28"/>
-    <circle class="leaf" cx="1452" cy="2798" r="36"/>
-    <circle class="leaf" cx="1400" cy="2785" r="40"/>
-    <circle class="leaf" cx="1355" cy="2802" r="32"/>
-    <circle class="leaf" cx="1310" cy="2788" r="38"/>
-    <circle class="leaf" cx="1435" cy="2875" r="44"/>
-    <circle class="leaf" cx="1388" cy="2862" r="30"/>
-    <circle class="leaf" cx="1342" cy="2878" r="36"/>
-    <circle class="leaf" cx="1298" cy="2865" r="42"/>
-    <circle class="leaf" cx="1265" cy="2882" r="28"/>
-    <circle class="leaf" cx="1455" cy="2952" r="38"/>
-    <circle class="leaf" cx="1408" cy="2938" r="34"/>
-    <circle class="leaf" cx="1362" cy="2955" r="40"/>
-    <circle class="leaf" cx="1318" cy="2942" r="44"/>
-    <circle class="leaf" cx="1422" cy="3025" r="32"/>
-    <circle class="leaf" cx="1378" cy="3012" r="38"/>
-    <circle class="leaf" cx="1332" cy="3028" r="28"/>
-    <circle class="leaf" cx="1288" cy="3015" r="42"/>
-    <circle class="leaf" cx="1450" cy="3098" r="36"/>
-    <circle class="leaf" cx="1402" cy="3085" r="44"/>
-    <circle class="leaf" cx="1355" cy="3102" r="30"/>
-    <circle class="leaf" cx="1310" cy="3088" r="38"/>
-    <circle class="leaf" cx="1435" cy="3172" r="40"/>
-    <circle class="leaf" cx="1390" cy="3158" r="28"/>
-    <circle class="leaf" cx="1344" cy="3175" r="36"/>
-    <circle class="leaf" cx="1298" cy="3162" r="44"/>
-    <circle class="leaf" cx="1262" cy="3178" r="32"/>
-    <circle class="leaf" cx="1460" cy="3248" r="38"/>
-    <circle class="leaf" cx="1412" cy="3235" r="34"/>
-    <circle class="leaf" cx="1365" cy="3252" r="42"/>
-    <circle class="leaf" cx="1320" cy="3238" r="30"/>
-    <circle class="leaf" cx="1425" cy="3322" r="36"/>
-    <circle class="leaf" cx="1380" cy="3308" r="44"/>
-    <circle class="leaf" cx="1335" cy="3325" r="28"/>
-    <circle class="leaf" cx="1292" cy="3312" r="40"/>
-    <circle class="leaf" cx="1452" cy="3395" r="38"/>
-    <circle class="leaf" cx="1405" cy="3382" r="32"/>
-    <circle class="leaf" cx="1358" cy="3398" r="44"/>
-    <circle class="leaf" cx="1312" cy="3385" r="36"/>
-    <circle class="leaf" cx="1432" cy="3468" r="30"/>
-    <circle class="leaf" cx="1385" cy="3455" r="38"/>
-    <circle class="leaf" cx="1340" cy="3472" r="42"/>
-    <circle class="leaf" cx="1295" cy="3458" r="28"/>
-    <circle class="leaf" cx="1262" cy="3475" r="36"/>
-    <circle class="leaf" cx="1458" cy="3545" r="44"/>
-    <circle class="leaf" cx="1410" cy="3532" r="34"/>
-    <circle class="leaf" cx="1362" cy="3548" r="38"/>
-    <circle class="leaf" cx="1318" cy="3535" r="30"/>
-    <circle class="leaf" cx="1428" cy="3618" r="40"/>
-    <circle class="leaf" cx="1382" cy="3605" r="28"/>
-    <circle class="leaf" cx="1338" cy="3622" r="36"/>
-    <circle class="leaf" cx="1292" cy="3608" r="44"/>
-    <circle class="leaf" cx="1452" cy="3692" r="32"/>
-    <circle class="leaf" cx="1400" cy="3678" r="38"/>
-    <circle class="leaf" cx="1355" cy="3695" r="42"/>
-    <circle class="leaf" cx="1310" cy="3682" r="28"/>
-    <circle class="leaf" cx="1435" cy="3765" r="36"/>
-    <circle class="leaf" cx="1388" cy="3752" r="44"/>
-    <circle class="leaf" cx="1342" cy="3768" r="30"/>
-    <circle class="leaf" cx="1298" cy="3755" r="38"/>
-    <circle class="leaf" cx="1265" cy="3772" r="40"/>
-    <circle class="leaf" cx="1455" cy="3845" r="34"/>
-    <circle class="leaf" cx="1408" cy="3832" r="42"/>
-    <circle class="leaf" cx="1362" cy="3848" r="28"/>
-    <circle class="leaf" cx="1318" cy="3835" r="36"/>
-    <circle class="leaf" cx="1422" cy="3918" r="44"/>
-    <circle class="leaf" cx="1378" cy="3905" r="32"/>
-    <circle class="leaf" cx="1332" cy="3922" r="38"/>
-    <circle class="leaf" cx="1288" cy="3908" r="30"/>
-    <circle class="leaf" cx="1450" cy="3985" r="40"/>
-    <circle class="leaf" cx="1402" cy="3972" r="36"/>
-    <circle class="leaf" cx="1355" cy="3988" r="44"/>
-  </svg>
-
   <!-- NAV -->
-  <nav>
+  <nav id="top">
     <a href="#hero" class="nav-logo">Aura Growth Co</a>
     <ul class="nav-links">
+      <li><a href="#who-we-serve">Who We Serve</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1139,26 +687,97 @@
 
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-eyebrow">Growth Strategy for Aesthetic &amp; Beauty Businesses</p>
-    <h1 class="hero-title">Aura Growth Co</h1>
-    <p class="hero-subtitle">We help aesthetic &amp; beauty businesses turn their marketing spend into a steady stream of high-value bookings.</p>
-    <a href="#contact" class="btn-primary">Work With Me</a>
-    <div class="scroll-hint">Scroll</div>
+    <div class="hero-bg"></div>
+    <svg class="hero-botanical" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <g stroke="#b0a090" stroke-width="1" fill="none" opacity="0.6">
+        <path d="M50,400 C100,300 200,250 300,200 C400,150 500,180 600,160"/>
+        <path d="M50,400 C80,480 130,520 180,560"/>
+        <ellipse cx="180" cy="250" rx="60" ry="30" transform="rotate(-30 180 250)" fill="#c8bca8" opacity="0.3"/>
+        <ellipse cx="280" cy="200" rx="50" ry="25" transform="rotate(-20 280 200)" fill="#c8bca8" opacity="0.25"/>
+        <ellipse cx="380" cy="170" rx="55" ry="28" transform="rotate(-15 380 170)" fill="#c8bca8" opacity="0.2"/>
+        <path d="M900,100 C1000,200 1050,300 1100,400 C1130,470 1150,530 1100,600"/>
+        <ellipse cx="980" cy="180" rx="55" ry="28" transform="rotate(20 980 180)" fill="#c8bca8" opacity="0.25"/>
+        <ellipse cx="1050" cy="280" rx="50" ry="25" transform="rotate(30 1050 280)" fill="#c8bca8" opacity="0.2"/>
+        <path d="M100,700 C200,650 300,620 400,600"/>
+        <path d="M800,700 C900,680 1000,640 1100,620"/>
+      </g>
+    </svg>
+
+    <p class="hero-label">Aesthetic &amp; Beauty Marketing</p>
+    <h1 class="hero-title">Aura<br/><em>Growth Co</em></h1>
+    <p class="hero-sub">Full-service growth marketing for aesthetic and beauty businesses — from paid ads to SEO, web design, and beyond.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Work With Me</a>
+      <a href="#services" class="btn-secondary">See Services</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section id="who-we-serve">
+    <div class="serve-inner">
+      <p class="section-label">Who We Serve</p>
+      <h2 class="section-title">Built for the <em>aesthetic industry</em></h2>
+      <p class="section-body">We work exclusively with aesthetic and beauty businesses — so you get specialists, not generalists.</p>
+      <div class="serve-grid">
+        <div class="serve-card">
+          <h3>Medical Spas</h3>
+          <p>Injectables · Laser Treatments · RF Microneedling · Facials · Body Contouring</p>
+        </div>
+        <div class="serve-card">
+          <h3>Plastic Surgeons</h3>
+          <p>Breast Augmentation · Liposuction · Rhinoplasty · Mommy Makeovers · BBL</p>
+        </div>
+        <div class="serve-card">
+          <h3>Dermatologists</h3>
+          <p>Cosmetic Dermatology · Skin Treatments · Chemical Peels · Acne & Anti-Aging</p>
+        </div>
+        <div class="serve-card">
+          <h3>Wellness Clinics</h3>
+          <p>IV Therapy · Hormone Replacement · Functional Medicine · Weight Loss</p>
+        </div>
+        <div class="serve-card">
+          <h3>Cosmetic Dentists</h3>
+          <p>Invisalign · Veneers · Whitening · Dental Reconstruction · Smile Design</p>
+        </div>
+        <div class="serve-card">
+          <h3>Beauty Brands</h3>
+          <p>Skincare Brands · Retail Beauty · Lash & Brow Studios · Hair Clinics</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" style="max-width:100%;">
-    <div class="inner">
-      <div class="about-content">
-        <p class="about-label">About</p>
-        <h2 class="about-title">Agency expertise,<br/>boutique attention.</h2>
-        <p class="about-text">Aura Growth Co is a boutique growth consultancy built for aesthetic &amp; beauty businesses. We bring enterprise-level analytics and media expertise to clinics, derm offices, med spas, and beauty brands that deserve better than generic marketing advice.</p>
-        <p class="about-text">We specialize in turning marketing spend into measurable outcomes. Whether you're running paid ads, managing a media budget, or trying to understand what's actually driving bookings, we help you get clarity and build systems that scale.</p>
-
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Agency expertise,<br/><em>boutique attention.</em></h2>
+        <div class="divider"></div>
+        <p class="section-body">Aura Growth Co is a boutique growth agency built exclusively for aesthetic &amp; beauty businesses. We bring enterprise-level analytics and media expertise to clinics, derm offices, med spas, and beauty brands that deserve better than generic marketing advice.</p>
+        <p class="section-body">We specialize in turning marketing spend into measurable bookings — not just impressions. Whether you need paid ads, SEO, a new website, or a full growth system, we own it end to end.</p>
+        <a href="#contact" class="btn-primary">Start a Conversation</a>
       </div>
-      <div class="about-visual">
-        <div class="about-box">
-          <p class="about-quote">Most aesthetic and beauty businesses are spending money on ads every month without knowing what's actually working. That's exactly what we help solve.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Aesthetic industry focus</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">48hr</div>
+          <div class="stat-label">Response guarantee</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1:1</div>
+          <div class="stat-label">Dedicated account attention</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Full</div>
+          <div class="stat-label">End-to-end service suite</div>
         </div>
       </div>
     </div>
@@ -1166,117 +785,211 @@
 
   <!-- SERVICES -->
   <section id="services">
-    <p class="section-eyebrow">Services</p>
-    <h2 class="section-title">How we can help</h2>
-    <div class="divider"></div>
-    <div class="services-grid">
-      <div class="service-card">
-        <p class="service-tag">Entry Point</p>
-        <h3 class="service-name">Ad Spend Audit</h3>
-        <p class="service-price">Pricing on inquiry</p>
-        <p class="service-desc">Find out which marketing is driving bookings and cut the rest. A deep review of your paid ad accounts across whatever platforms you're running, with clear, prioritized recommendations you can act on immediately.</p>
-        <ul class="service-includes">
-          <li>Full review of your ad accounts: campaign structure, targeting &amp; creative</li>
-          <li>Identification of budget waste &amp; underperforming campaigns</li>
-          <li>Analysis of cost per booking, cost per lead &amp; conversion rate</li>
-          <li>Prioritized action plan with specific next steps</li>
-
-          <li>Turnaround: 5–7 business days</li>
-        </ul>
+    <div class="services-inner">
+      <div class="services-header">
+        <div>
+          <p class="section-label">Services</p>
+          <h2 class="section-title">Everything you need<br/><em>under one roof</em></h2>
+        </div>
+        <p class="section-body" style="color:var(--muted); font-weight:300; font-size:0.95rem;">No juggling five agencies. We handle every channel and system your practice needs to grow — from the first ad click to a booked appointment.</p>
       </div>
-      <div class="service-card">
-        <p class="service-tag">Ongoing Partnership</p>
-        <h3 class="service-name">Growth Advisory</h3>
-        <p class="service-price">Pricing on inquiry</p>
-        <p class="service-desc">For businesses ready to scale. We become your dedicated growth partner, owning your marketing performance, optimizing spend, and building systems for predictable, sustainable revenue growth.</p>
-        <ul class="service-includes">
-          <li>Monthly growth strategy &amp; channel planning</li>
-          <li>Ongoing ad performance monitoring &amp; optimization</li>
-          <li>Custom reporting dashboard so you always know what's working</li>
-          <li>Audience &amp; messaging strategy refinement</li>
 
-          <li>Minimum 3-month engagement</li>
-        </ul>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <span class="service-icon">📊</span>
+          <h3>Paid Advertising</h3>
+          <p>Data-driven ad campaigns across Google, Meta, Instagram, and YouTube — engineered to convert browsers into booked patients at the lowest possible cost.</p>
+          <div class="service-tags">
+            <span class="tag">Google Ads</span>
+            <span class="tag">Meta Ads</span>
+            <span class="tag">YouTube Ads</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <span class="service-icon">🔍</span>
+          <h3>Search Engine Optimization</h3>
+          <p>Dominate local and organic search so high-intent patients find you first. Technical SEO, content, and link building tailored to aesthetic medicine.</p>
+          <div class="service-tags">
+            <span class="tag">Local SEO</span>
+            <span class="tag">Technical SEO</span>
+            <span class="tag">Content</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <span class="service-icon">💻</span>
+          <h3>Web Design &amp; Development</h3>
+          <p>Beautiful, fast, conversion-optimized websites that reflect the caliber of your practice and turn visitors into consultation requests.</p>
+          <div class="service-tags">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Copywriting</span>
+            <span class="tag">Booking Integration</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <span class="service-icon">💬</span>
+          <h3>Text &amp; Email Marketing</h3>
+          <p>Strategic SMS and email campaigns that re-engage leads, promote offers, and keep your brand top of mind — with stunning graphics your patients will actually open.</p>
+          <div class="service-tags">
+            <span class="tag">SMS Campaigns</span>
+            <span class="tag">Email Flows</span>
+            <span class="tag">Graphic Design</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <span class="service-icon">🎯</span>
+          <h3>Lead Management &amp; CRM</h3>
+          <p>Automated follow-up sequences, drip campaigns, and lead management tools that ensure no inquiry slips through the cracks — turning more leads into bookings.</p>
+          <div class="service-tags">
+            <span class="tag">CRM Setup</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Drip Campaigns</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <span class="service-icon">📈</span>
+          <h3>Ad Spend Audit</h3>
+          <p>Find out exactly which marketing is driving bookings — and cut the rest. A thorough review of your accounts with a clear, prioritized action plan. Turnaround: 5–7 days.</p>
+          <div class="service-tags">
+            <span class="tag">Account Review</span>
+            <span class="tag">Budget Analysis</span>
+            <span class="tag">Action Plan</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section id="process" style="max-width:100%; padding:100px 60px;">
-    <div class="inner">
-      <p class="section-eyebrow">The Process</p>
-      <h2 class="section-title" style="color:var(--cream);">How it works</h2>
-      <div class="divider"></div>
+  <section id="process">
+    <div class="process-inner">
+      <div class="process-header">
+        <p class="section-label">The Process</p>
+        <h2 class="section-title">How it <em>works</em></h2>
+        <div class="divider"></div>
+        <p class="section-body" style="color:var(--muted);font-weight:300;font-size:0.9rem;margin-top:0.5rem;">Simple, transparent, and built around your goals — not ours.</p>
+      </div>
       <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">01</div>
-          <h3 class="step-title">Audit &amp; Diagnose</h3>
-          <p class="step-desc">We start by understanding exactly where your marketing money is going and what it's actually producing. No assumptions, just data.</p>
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Audit &amp; Diagnose</h3>
+          <p>We start by understanding exactly where your marketing money is going and what it's actually producing. No assumptions, just data.</p>
         </div>
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <h3 class="step-title">Clarify &amp; Prioritize</h3>
-          <p class="step-desc">You get a clear picture of what's working, what's wasting money, and a prioritized plan for what to fix first. Simple, actionable, direct.</p>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Clarify &amp; Prioritize</h3>
+          <p>You get a clear picture of what's working, what's wasting money, and a prioritized plan for what to fix first. Simple, actionable, direct.</p>
         </div>
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <h3 class="step-title">Build &amp; Scale</h3>
-          <p class="step-desc">For ongoing clients, we build systems that make your revenue predictable, so your bookings aren't dependent on luck or constant ad spend increases.</p>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Build &amp; Scale</h3>
+          <p>We build the systems, run the campaigns, and optimize every channel — so your bookings become predictable, not luck-dependent.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOUNDING CLIENTS -->
-  <section id="founding">
-    <div class="founding-box">
-      <div class="founding-badge">Now Accepting Clients</div>
-      <h2 class="founding-title">Now accepting a small number<br/>of clients at a reduced rate</h2>
-      <p class="founding-text">We're selectively taking on new clients and offering reduced rates for a limited time. If you're ready to get clarity on your marketing and start driving real bookings, let's talk.</p>
+  <!-- CTA BAND -->
+  <section id="cta-band">
+    <div class="cta-inner">
+      <p class="section-label">Now Accepting Clients</p>
+      <h2 class="section-title">Ready to grow? <em>Let's talk.</em></h2>
+      <p class="section-body">We're selectively taking on new clients and offering reduced rates for a limited time. If you're ready to get clarity on your marketing and start driving real bookings, reach out today.</p>
       <a href="#contact" class="btn-primary">Work With Me</a>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" style="max-width:100%; padding:100px 60px;">
-    <div class="inner">
-      <p class="section-eyebrow">Contact</p>
-      <h2 class="section-title">Ready to grow?</h2>
-      <p class="contact-sub">Let's find out where your marketing is leaving money on the table. Fill out the form below and we'll be in touch within 48 hours.</p>
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="da83beaf-a1a4-4d14-a518-7d85640e9eeb"/>
-        <input type="hidden" name="subject" value="New inquiry from Aura Growth Co website"/>
-        <input type="hidden" name="redirect" value="https://auragrowthco.com?success=true"/>
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Ready to <em>grow?</em></h2>
+        <div class="divider"></div>
+        <p class="section-body">Let's find out where your marketing is leaving money on the table. Fill out the form and we'll be in touch within 48 hours.</p>
+        <div class="contact-detail">
+          <strong>Response Time</strong>
+          Within 48 business hours
+        </div>
+        <div class="contact-detail">
+          <strong>Availability</strong>
+          Now accepting new clients at reduced rates
+        </div>
+        <div class="contact-detail">
+          <strong>Timeline</strong>
+          Results-focused engagements typically run 3+ months
+        </div>
+      </div>
+
+      <form>
         <div class="form-row">
-          <div class="form-group">
+          <div>
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" required/>
+            <input type="text" id="name" placeholder="Jane Smith" />
           </div>
-          <div class="form-group">
+          <div>
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required/>
+            <input type="email" id="email" placeholder="jane@yourpractice.com" />
           </div>
         </div>
-        <div class="form-group">
-          <label for="business">Business Name</label>
-          <input type="text" id="business" name="business" placeholder="Your Clinic Name"/>
+        <div class="form-row">
+          <div>
+            <label for="business">Business Name</label>
+            <input type="text" id="business" placeholder="Your Practice Name" />
+          </div>
+          <div>
+            <label for="adspend">Monthly Ad Spend</label>
+            <select id="adspend">
+              <option value="">Select range</option>
+              <option>Under $2,000</option>
+              <option>$2,000 – $5,000</option>
+              <option>$5,000 – $10,000</option>
+              <option>$10,000 – $25,000</option>
+              <option>$25,000+</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="spend">Monthly Ad Spend (optional)</label>
-          <input type="text" id="spend" name="spend" placeholder="e.g. $3,000/month — helps us tailor our response"/>
+        <div>
+          <label for="service">Service Interest</label>
+          <select id="service">
+            <option value="">What are you looking for?</option>
+            <option>Paid Advertising</option>
+            <option>SEO</option>
+            <option>Web Design &amp; Development</option>
+            <option>Text &amp; Email Marketing</option>
+            <option>Lead Management / CRM</option>
+            <option>Ad Spend Audit</option>
+            <option>Full Growth Partnership</option>
+            <option>Not sure yet</option>
+          </select>
         </div>
-        <div class="form-group">
+        <div>
           <label for="message">What are you struggling with?</label>
-          <textarea id="message" name="message" placeholder="Tell us a bit about your business and what's not working with your marketing..."></textarea>
+          <textarea id="message" rows="4" placeholder="Tell us about your biggest marketing challenge..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Send Message →</button>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Message →</button>
+        </div>
       </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 <span>Aura Growth Co</span>. All rights reserved</p>
+    <div class="footer-logo">Aura Growth Co</div>
+    <div class="footer-copy">© 2026 Aura Growth Co. All rights reserved.</div>
   </footer>
 
 </body>
